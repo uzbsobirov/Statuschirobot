@@ -3,7 +3,7 @@ from aiogram import types
 from aiogram.dispatcher.filters.builtin import CommandStart
 
 from data.config import ADMINS
-from loader import dp, db, bot
+from loader import dp, db, bot, db_json
 
 
 @dp.message_handler(CommandStart(), state='*')
@@ -21,21 +21,11 @@ async def bot_start(message: types.Message):
             user_id=user_id
         )
 
-
-        # read the existing JSON file
-        with open('data.json', 'r', encoding='utf-8') as f:
-            data = json.load(f)
-
-        # add new data to the Python object
-        data.append({
-            'full_name': full_name,
-            'username': username,
-            'user_id': user_id
-        })
-
-        # write the updated JSON string to the file
-        with open('data.json', 'w') as f:
-            json.dump(data, f, indent=2)
+        await db_json.add_user(
+            full_name=full_name,
+            username=username,
+            user_id=user_id
+        )
 
         for admin in ADMINS:
             # About message to ADMIN
