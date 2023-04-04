@@ -1,8 +1,8 @@
-import json
 from aiogram import types
 from aiogram.dispatcher.filters.builtin import CommandStart
 
 from data.config import ADMINS
+from keyboards.default.main import main
 from loader import dp, db, bot, db_json
 
 
@@ -36,4 +36,5 @@ async def bot_start(message: types.Message):
         for admin in ADMINS:
             await bot.send_message(chat_id=admin, text=f"{user_mention} [<code>{user_id}</code>] bazaga oldin qo'shilgan")
 
-    await message.answer(f"Xush kelibsiz! {full_name}")
+    text = f"<b>Assalomu alaykum {user_mention}\n\n✔️ Boshlash uchun tugmalardan birini tanlang...</b>"
+    await message.answer(text, reply_markup=main)
