@@ -24,6 +24,7 @@ async def state_image(message: types.Message, state: FSMContext):
 
 @dp.message_handler(state=Status.text)
 async def state_status(message: types.Message, state: FSMContext):
+    get_me = await bot.get_me()
     data = await state.get_data()
 
     file_id = data.get('file_id')
@@ -42,7 +43,8 @@ async def state_status(message: types.Message, state: FSMContext):
     y = (img.height - text_size[2]) / 2
 
     draw.text((x, y), status, font=font, fill='yellow')
-    deleted = img.save("media/results.jpg")
+    img.save("media/results.jpg")
     with open(file='media/results.jpg', mode='rb') as photo:
-        await message.answer_photo(photo=photo, caption=f' ismiga rasm tayyor✅')
+        caption = f"📝<code>{status}</code>\n\n✅<b> @{get_me.username} orqali taqdim etildi!</b>"
+        await message.answer_photo(photo=photo, caption=caption)
         await state.finish()
