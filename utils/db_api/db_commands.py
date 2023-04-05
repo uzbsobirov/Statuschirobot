@@ -47,7 +47,11 @@ class Database:
         id SERIAL PRIMARY KEY,
         full_name VARCHAR(255) NOT NULL,
         username varchar(255) NULL,
-        user_id BIGINT NOT NULL UNIQUE
+        user_id BIGINT NOT NULL UNIQUE,
+        text_place TEXT,
+        text_shrift INTEGER,
+        text_size INTEGER,
+        text_color TEXT
         );
         """
         await self.execute(sql, execute=True)
@@ -59,9 +63,9 @@ class Database:
         )
         return sql, tuple(parameters.values())
 
-    async def add_user(self, full_name: str, username: str, user_id: int):
-        sql = "INSERT INTO users (full_name, username, user_id) VALUES($1, $2, $3) returning *"
-        return await self.execute(sql, full_name, username, user_id, fetchrow=True)
+    async def add_user(self, full_name: str, username: str, user_id: int, text_place: str, text_shrift: int, text_size: int, text_color: str):
+        sql = "INSERT INTO users (full_name, username, user_id, text_place, text_shrift, text_size, text_color) VALUES($1, $2, $3, $4, $5, $6, $7) returning *"
+        return await self.execute(sql, full_name, username, user_id, text_place, text_shrift, text_size, text_color, fetchrow=True)
 
     async def select_all_users(self):
         sql = "SELECT * FROM Users"

@@ -1,3 +1,5 @@
+import logging
+
 from aiogram import types
 from aiogram.dispatcher.filters.builtin import CommandStart
 
@@ -18,13 +20,21 @@ async def bot_start(message: types.Message):
         await db.add_user(
             full_name=full_name,
             username=username,
-            user_id=user_id
+            user_id=user_id,
+            text_size=0,
+            text_color='yellow',
+            text_place='center',
+            text_shrift=0
         )
 
         await db_json.add_user(
             full_name=full_name,
             username=username,
-            user_id=user_id
+            user_id=user_id,
+            text_size=0,
+            text_color='yellow',
+            text_place='center',
+            text_shrift=0
         )
 
         for admin in ADMINS:
@@ -32,7 +42,8 @@ async def bot_start(message: types.Message):
             msg = f"{user_mention} [<code>{user_id}</code>] bazaga qo'shildi."
             await bot.send_message(chat_id=admin, text=msg)
 
-    except:
+    except Exception as error:
+        logging.info(error)
         for admin in ADMINS:
             await bot.send_message(chat_id=admin, text=f"{user_mention} [<code>{user_id}</code>] bazaga oldin qo'shilgan")
 

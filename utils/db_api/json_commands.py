@@ -12,7 +12,11 @@ class Database:
         data.append({
             'full_name': full_name,
             'username': username,
-            'user_id': user_id
+            'user_id': user_id,
+            'text_size': 0,
+            'text_color': 'yellow',
+            'text_place': 'center',
+            'text_shrift': 0
         })
 
         # write the updated JSON string to the file

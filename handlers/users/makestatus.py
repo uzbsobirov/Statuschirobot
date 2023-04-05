@@ -1,4 +1,4 @@
-from loader import dp
+from loader import dp, bot
 from states.makestatus import Status
 
 from aiogram import types
@@ -27,20 +27,22 @@ async def state_status(message: types.Message, state: FSMContext):
     data = await state.get_data()
 
     file_id = data.get('file_id')
+    photo_info = await bot.get_file(file_id)
+    file_path = photo_info['file_path']
+    await bot.download_file(file_path, "image.jpg")
     status = message.text
 
-    with open(file=file_id, mode='rb') as photo:
-        img = Image.open(photo)
-        img.save("media/image.jpg")
-        draw = ImageDraw.Draw(img)
-        font = ImageFont.truetype("media/ostrich.otf", 24)
-        text_size = draw.textbbox((100, 100), status, font=font)
+    path_photo = 'C:/Users/Servis/Documents/Programming/Bot/Statuschirobot/image.jpg'
+    img = Image.open(path_photo)
+    draw = ImageDraw.Draw(img)
+    font = ImageFont.truetype("media/allura.otf", 68)
+    text_size = draw.textbbox((100, 100), status, font=font)
 
-        x = (img.width - text_size[2]) / 2
-        y = 400
+    x = (img.width - text_size[2]) / 2
+    y = (img.height - text_size[2]) / 2
 
-        draw.text((x, y), status, font=font, fill='black')
-        img.save("media/results.jpg")
-        with open(file='media/results.jpg', mode='rb') as photo:
-            await message.answer_photo(photo=photo, caption=f' ismiga rasm tayyor✅')
-            await state.finish()
+    draw.text((x, y), status, font=font, fill='yellow')
+    deleted = img.save("media/results.jpg")
+    with open(file='media/results.jpg', mode='rb') as photo:
+        await message.answer_photo(photo=photo, caption=f' ismiga rasm tayyor✅')
+        await state.finish()
