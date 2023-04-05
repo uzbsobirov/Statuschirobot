@@ -3,7 +3,7 @@ import json
 class Database:
 
 
-    async def add_user(self, full_name, username, user_id):
+    async def add_user(self, full_name, username, user_id, text_size, text_color, text_place, text_shrift):
         # read the existing JSON file
         with open('data.json', 'r', encoding='utf-8') as f:
             data = json.load(f)
@@ -13,10 +13,10 @@ class Database:
             'full_name': full_name,
             'username': username,
             'user_id': user_id,
-            'text_size': 0,
-            'text_color': 'yellow',
-            'text_place': 'center',
-            'text_shrift': 0
+            'text_size': text_size,
+            'text_color': text_color,
+            'text_place': text_place,
+            'text_shrift': text_shrift
         })
 
         # write the updated JSON string to the file
