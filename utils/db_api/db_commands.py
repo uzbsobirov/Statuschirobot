@@ -93,6 +93,18 @@ class Database:
         sql = "UPDATE Users SET text_shrift=$1 WHERE user_id=$2"
         return await self.execute(sql, text_shrift, user_id, execute=True)
 
+    async def update_text_size(self, text_size, user_id):
+        sql = "UPDATE Users SET text_size=$1 WHERE user_id=$2"
+        return await self.execute(sql, text_size, user_id, execute=True)
+
+    async def update_text_color(self, text_color, user_id):
+        sql = "UPDATE Users SET text_color=$1 WHERE user_id=$2"
+        return await self.execute(sql, text_color, user_id, execute=True)
+
+    async def update_text_place(self, text_place, user_id):
+        sql = "UPDATE Users SET text_place=$1 WHERE user_id=$2"
+        return await self.execute(sql, text_place, user_id, execute=True)
+
     async def delete_user(self, user_id):
         sql = "DELETE FROM Users WHERE user_id=$1"
         await self.execute(sql, user_id, execute=True)

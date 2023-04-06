@@ -7,7 +7,7 @@ sizes = InlineKeyboardMarkup(
                     text="🏷️25%", callback_data='25'
                 ),
             InlineKeyboardButton(
-                    text="🖌🏷️50%", callback_data='50'
+                    text="🏷️50%", callback_data='50'
                 )
         ],
         [

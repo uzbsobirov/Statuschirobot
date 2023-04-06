@@ -54,3 +54,54 @@ class Database:
 
         with open('data.json', 'w') as file:
             json.dump(data, file)
+
+
+    async def update_text_size(self, text_size, user_id):
+        # Open the JSON file for reading
+        with open('data.json', 'r') as file:
+            # Parse the contents of the file into a Python object
+            data = json.load(file)
+
+        # Iterate over the array of objects and check if the "id" key is equal to 1
+        for row in data:
+            if row['user_id'] == user_id:
+                # If a matching object is found, store it in a variable or perform the desired operations on it
+                row['text_size'] = text_size
+                break
+
+        with open('data.json', 'w') as file:
+            json.dump(data, file)
+
+
+    async def update_text_color(self, text_color, user_id):
+        # Open the JSON file for reading
+        with open('data.json', 'r') as file:
+            # Parse the contents of the file into a Python object
+            data = json.load(file)
+
+        # Iterate over the array of objects and check if the "id" key is equal to 1
+        for row in data:
+            if row['user_id'] == user_id:
+                # If a matching object is found, store it in a variable or perform the desired operations on it
+                row['text_color'] = text_color
+                break
+
+        with open('data.json', 'w') as file:
+            json.dump(data, file)
+
+
+    async def update_text_place(self, text_place, user_id):
+        # Open the JSON file for reading
+        with open('data.json', 'r') as file:
+            # Parse the contents of the file into a Python object
+            data = json.load(file)
+
+        # Iterate over the array of objects and check if the "id" key is equal to 1
+        for row in data:
+            if row['user_id'] == user_id:
+                # If a matching object is found, store it in a variable or perform the desired operations on it
+                row['text_place'] = text_place
+                break
+
+        with open('data.json', 'w') as file:
+            json.dump(data, file)

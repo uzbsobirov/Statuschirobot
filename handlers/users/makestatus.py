@@ -51,6 +51,7 @@ async def state_status(message: types.Message, state: FSMContext):
     path_photo = 'C:/Users/Servis/Documents/Programming/Bot/Statuschirobot/image.jpg'
     img = Image.open(path_photo)
     draw = ImageDraw.Draw(img)
+
     if text_shrift == 'shrift1':
         font = ImageFont.truetype("media/OpenSans.ttf", text_size)
         text_size = draw.textbbox((100, 100), status, font=font)
@@ -67,6 +68,48 @@ async def state_status(message: types.Message, state: FSMContext):
 
     elif text_shrift == 'shrift2':
         font = ImageFont.truetype("media/allura.otf", text_size)
+        text_size = draw.textbbox((100, 100), status, font=font)
+
+        x = (img.width - text_size[2]) / 2
+        y = (img.height - text_size[2]) / 2
+
+        draw.text((x, y), status, font=font, fill=text_color)
+        img.save("media/results.jpg")
+        with open(file='media/results.jpg', mode='rb') as photo:
+            caption = f"📝<code>{status}</code>\n\n✅<b> @{get_me.username} orqali taqdim etildi!</b>"
+            await message.answer_photo(photo=photo, caption=caption)
+            await state.finish()
+
+    elif text_shrift == 'shrift3':
+        font = ImageFont.truetype("media/Quicksand-Light.otf", text_size)
+        text_size = draw.textbbox((100, 100), status, font=font)
+
+        x = (img.width - text_size[2]) / 2
+        y = (img.height - text_size[2]) / 2
+
+        draw.text((x, y), status, font=font, fill=text_color)
+        img.save("media/results.jpg")
+        with open(file='media/results.jpg', mode='rb') as photo:
+            caption = f"📝<code>{status}</code>\n\n✅<b> @{get_me.username} orqali taqdim etildi!</b>"
+            await message.answer_photo(photo=photo, caption=caption)
+            await state.finish()
+
+    elif text_shrift == 'shrift4':
+        font = ImageFont.truetype("media/Quicksand_Dash.otf", text_size)
+        text_size = draw.textbbox((100, 100), status, font=font)
+
+        x = (img.width - text_size[2]) / 2
+        y = (img.height - text_size[2]) / 2
+
+        draw.text((x, y), status, font=font, fill=text_color)
+        img.save("media/results.jpg")
+        with open(file='media/results.jpg', mode='rb') as photo:
+            caption = f"📝<code>{status}</code>\n\n✅<b> @{get_me.username} orqali taqdim etildi!</b>"
+            await message.answer_photo(photo=photo, caption=caption)
+            await state.finish()
+
+    elif text_shrift == 'shrift5':
+        font = ImageFont.truetype("media/ostrich.otf", text_size)
         text_size = draw.textbbox((100, 100), status, font=font)
 
         x = (img.width - text_size[2]) / 2
