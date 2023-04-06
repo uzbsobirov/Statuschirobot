@@ -1,5 +1,5 @@
 from loader import dp, db
-from .detectors import detect_color, detect_size
+from .detectors import detect_color, detect_size, detect_shrift
 
 from aiogram import types
 from aiogram.dispatcher import FSMContext
@@ -16,7 +16,8 @@ async def my_setting(message: types.Message, state: FSMContext):
 
 
 
-    text = f"⚙️ Sizning sozlamalaringiz👇\n\n🏷️ Matn joylashuvi: {place}\n" \
-           f"🖌️ Matn shrifti: {shrift}\n📏 Matn hajmi: {detect_size(size=size)}\n🔖 Matn rangi: {detect_color(color=color)}"
+    text = f"<b>⚙️ Sizning sozlamalaringiz👇\n\n🏷️ Matn joylashuvi: {place}\n" \
+           f"🖌️ Matn shrifti: <i>{detect_shrift(shrift=shrift)}</i>\n" \
+           f"📏 Matn hajmi: <i>{detect_size(size=size)}</i>\n🔖 Matn rangi: <i>{detect_color(color=color)}</i></b>"
 
     await message.answer(text=text)

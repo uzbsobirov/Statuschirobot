@@ -31,3 +31,20 @@ def detect_size(size):
     elif size == 100:
         new_size = "100%"
         return new_size
+
+def detect_shrift(shrift):
+    if shrift == 'shrift1':
+        new_shrift = "1-shrift"
+        return new_shrift
+    elif shrift == 'shrift2':
+        new_shrift = "2-shrift"
+        return new_shrift
+    elif shrift == 'shrift3':
+        new_shrift = "3-shrift"
+        return new_shrift
+    elif shrift == 'shrift4':
+        new_shrift = "4-shrift"
+        return new_shrift
+    elif shrift == 'shrift5':
+        new_shrift = "5-shrift"
+        return new_shrift
