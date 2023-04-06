@@ -49,7 +49,7 @@ class Database:
         username varchar(255) NULL,
         user_id BIGINT NOT NULL UNIQUE,
         text_place TEXT,
-        text_shrift INTEGER,
+        text_shrift TEXT,
         text_size INTEGER,
         text_color TEXT
         );
@@ -63,7 +63,7 @@ class Database:
         )
         return sql, tuple(parameters.values())
 
-    async def add_user(self, full_name: str, username: str, user_id: int, text_place: str, text_shrift: int, text_size: int, text_color: str):
+    async def add_user(self, full_name: str, username: str, user_id: int, text_place: str, text_shrift: str, text_size: int, text_color: str):
         sql = "INSERT INTO users (full_name, username, user_id, text_place, text_shrift, text_size, text_color) VALUES($1, $2, $3, $4, $5, $6, $7) returning *"
         return await self.execute(sql, full_name, username, user_id, text_place, text_shrift, text_size, text_color, fetchrow=True)
 
@@ -88,6 +88,10 @@ class Database:
     async def update_user_issubs(self, issubs, user_id):
         sql = "UPDATE Users SET issubs=$1 WHERE user_id=$2"
         return await self.execute(sql, issubs, user_id, execute=True)
+
+    async def update_text_shrift(self, text_shrift, user_id):
+        sql = "UPDATE Users SET text_shrift=$1 WHERE user_id=$2"
+        return await self.execute(sql, text_shrift, user_id, execute=True)
 
     async def delete_user(self, user_id):
         sql = "DELETE FROM Users WHERE user_id=$1"

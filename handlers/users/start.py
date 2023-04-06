@@ -24,7 +24,7 @@ async def bot_start(message: types.Message):
             text_size=0,
             text_color='yellow',
             text_place='center',
-            text_shrift=0
+            text_shrift='shrift1'
         )
 
         await db_json.add_user(
@@ -34,7 +34,7 @@ async def bot_start(message: types.Message):
             text_size=0,
             text_color='yellow',
             text_place='center',
-            text_shrift=0
+            text_shrift='shrift1'
         )
 
         for admin in ADMINS:

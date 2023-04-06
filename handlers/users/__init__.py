@@ -1,3 +1,3 @@
 from . import (
-    help, admin, start, makestatus, shrifts, settings
+    help, admin, start, makestatus, shrifts, settings, backs
 )
