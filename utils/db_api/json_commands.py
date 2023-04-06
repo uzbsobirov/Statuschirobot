@@ -38,3 +38,19 @@ class Database:
 
         with open('data.json', 'w') as file:
             json.dump(data, file)
+
+
+    async def select_user(self, user_id):
+        # Open the JSON file for reading
+        with open('data.json', 'r') as file:
+            # Parse the contents of the file into a Python object
+            data = json.load(file)
+
+        # Iterate over the array of objects and check if the "id" key is equal to 1
+        for row in data:
+            if row['user_id'] == user_id:
+
+                break
+
+        with open('data.json', 'w') as file:
+            json.dump(data, file)

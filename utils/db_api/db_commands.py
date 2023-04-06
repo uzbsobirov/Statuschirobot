@@ -71,7 +71,7 @@ class Database:
         sql = "SELECT * FROM Users"
         return await self.execute(sql, fetch=True)
 
-    async def select_one_users(self, user_id):
+    async def select_one_user(self, user_id):
         sql = "SELECT * FROM Users WHERE user_id=$1"
         return await self.execute(sql, user_id, fetch=True)
 

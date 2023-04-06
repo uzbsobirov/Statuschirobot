@@ -25,26 +25,31 @@ async def state_shrift_setting(call: types.CallbackQuery, state: FSMContext):
         await db_json.update_text_shrift(text_shrift=data, user_id=user_id)
         await call.message.edit_caption(caption="<b>✅Status matnining doimiy shrifti tanlandi\n\n"
                                                 "🖌️ Siz 1-shriftni tanladingiz</b>")
+
     elif data == 'shrift2':
         await db.update_text_shrift(text_shrift=data, user_id=user_id)
         await db_json.update_text_shrift(text_shrift=data, user_id=user_id)
         await call.message.edit_caption(caption="<b>✅Status matnining doimiy shrifti tanlandi\n\n"
                                                 "🖌️ Siz 2-shriftni tanladingiz</b>")
+
     elif data == 'shrift3':
         await db.update_text_shrift(text_shrift=data, user_id=user_id)
         await db_json.update_text_shrift(text_shrift=data, user_id=user_id)
         await call.message.edit_caption(caption="<b>✅Status matnining doimiy shrifti tanlandi\n\n"
                                                 "🖌️ Siz 3-shriftni tanladingiz</b>")
+
     elif data == 'shrift4':
         await db.update_text_shrift(text_shrift=data, user_id=user_id)
         await db_json.update_text_shrift(text_shrift=data, user_id=user_id)
         await call.message.edit_caption(caption="<b>✅Status matnining doimiy shrifti tanlandi\n\n"
                                                 "🖌️ Siz 4-shriftni tanladingiz</b>")
+
     elif data == 'shrift5':
         await db.update_text_shrift(text_shrift=data, user_id=user_id)
         await db_json.update_text_shrift(text_shrift=data, user_id=user_id)
         await call.message.edit_caption(caption="<b>✅Status matnining doimiy shrifti tanlandi\n\n"
                                                 "🖌️ Siz 5-shriftni tanladingiz</b>")
+
     else:
         await call.message.delete()
         """
@@ -52,7 +57,8 @@ async def state_shrift_setting(call: types.CallbackQuery, state: FSMContext):
         """
         text = "Kerakli bo'limni tanlang 👇"
         await call.message.answer(text=text, reply_markup=settings)
-        await state.finish()
+
+    await Settings.main.set()
 
 
 

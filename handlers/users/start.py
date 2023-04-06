@@ -21,7 +21,7 @@ async def bot_start(message: types.Message):
             full_name=full_name,
             username=username,
             user_id=user_id,
-            text_size=0,
+            text_size=50,
             text_color='yellow',
             text_place='center',
             text_shrift='shrift1'
@@ -31,7 +31,7 @@ async def bot_start(message: types.Message):
             full_name=full_name,
             username=username,
             user_id=user_id,
-            text_size=0,
+            text_size=50,
             text_color='yellow',
             text_place='center',
             text_shrift='shrift1'
