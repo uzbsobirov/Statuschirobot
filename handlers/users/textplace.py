@@ -19,58 +19,55 @@ async def state_shrift_setting(call: types.CallbackQuery, state: FSMContext):
 
 
     if data == 'top_left':
-        await db.update_text_place(text_place=data, user_id=user_id)
-        await db_json.update_text_place(text_place=data, user_id=user_id)
-        await call.message.edit_text(text="<b>✅Status matnining doimiy shrifti tanlandi\n\n"
-                                                "🏷️ Matn joylashuvi: ↖️</b>")
+        await call.answer(text="❗️ Noto'g'ri joylashuv", show_alert=True)
+        await Settings.place.set()
 
     elif data == 'top_center':
         await db.update_text_place(text_place=data, user_id=user_id)
         await db_json.update_text_place(text_place=data, user_id=user_id)
         await call.message.edit_text(text="<b>✅Status matnining doimiy shrifti tanlandi\n\n"
                                                 "🏷️ Matn joylashuvi: ⬆️</b>")
+        await Settings.main.set()
 
     elif data == 'top_right':
-        await db.update_text_place(text_place=data, user_id=user_id)
-        await db_json.update_text_place(text_place=data, user_id=user_id)
-        await call.message.edit_text(text="<b>✅Status matnining doimiy shrifti tanlandi\n\n"
-                                                "🏷️ Matn joylashuvi: ↗️</b>")
+        await call.answer(text="❗️ Noto'g'ri joylashuv", show_alert=True)
+        await Settings.place.set()
 
     elif data == 'left':
         await db.update_text_place(text_place=data, user_id=user_id)
         await db_json.update_text_place(text_place=data, user_id=user_id)
         await call.message.edit_text(text="<b>✅Status matnining doimiy shrifti tanlandi\n\n"
                                                 "🏷️ Matn joylashuvi: ⬅️</b>")
+        await Settings.main.set()
 
     elif data == 'center':
         await db.update_text_place(text_place=data, user_id=user_id)
         await db_json.update_text_place(text_place=data, user_id=user_id)
         await call.message.edit_text(text="<b>✅Status matnining doimiy shrifti tanlandi\n\n"
                                                 "🏷️ Matn joylashuvi: ⏺</b>")
+        await Settings.main.set()
 
     elif data == 'right':
         await db.update_text_place(text_place=data, user_id=user_id)
         await db_json.update_text_place(text_place=data, user_id=user_id)
         await call.message.edit_text(text="<b>✅Status matnining doimiy rangi tanlandi\n\n"
                                                 "🏷️ Matn joylashuvi: ➡️</b>")
+        await Settings.main.set()
 
     elif data == 'bottom_left':
-        await db.update_text_place(text_place=data, user_id=user_id)
-        await db_json.update_text_place(text_place=data, user_id=user_id)
-        await call.message.edit_text(text="<b>✅Status matnining doimiy rangi tanlandi\n\n"
-                                                "🏷️ Matn joylashuvi: ↙️</b>")
+        await call.answer(text="❗️ Noto'g'ri joylashuv", show_alert=True)
+        await Settings.place.set()
 
     elif data == 'bottom_center':
         await db.update_text_place(text_place=data, user_id=user_id)
         await db_json.update_text_place(text_place=data, user_id=user_id)
         await call.message.edit_text(text="<b>✅Status matnining doimiy rangi tanlandi\n\n"
                                                 "🏷️ Matn joylashuvi: ⬇️</b>")
+        await Settings.main.set()
 
     elif data == 'bottom_right':
-        await db.update_text_place(text_place=data, user_id=user_id)
-        await db_json.update_text_place(text_place=data, user_id=user_id)
-        await call.message.edit_text(text="<b>✅Status matnining doimiy rangi tanlandi\n\n"
-                                                "🏷️ Matn joylashuvi: ↘️</b>")
+        await call.answer(text="❗️ Noto'g'ri joylashuv", show_alert=True)
+        await Settings.place.set()
 
     else:
         await call.message.delete()
@@ -80,4 +77,4 @@ async def state_shrift_setting(call: types.CallbackQuery, state: FSMContext):
         text = "Kerakli bo'limni tanlang 👇"
         await call.message.answer(text=text, reply_markup=settings)
 
-    await Settings.main.set()
+        await Settings.main.set()

@@ -1,5 +1,6 @@
 from loader import dp, bot, db, db_json
 from states.makestatus import Status
+from .detectors import detect_shrift_ttf, detect_place
 
 from aiogram import types
 from aiogram.dispatcher import FSMContext
@@ -52,72 +53,21 @@ async def state_status(message: types.Message, state: FSMContext):
     img = Image.open(path_photo)
     draw = ImageDraw.Draw(img)
 
-    if text_shrift == 'shrift1':
-        font = ImageFont.truetype("media/OpenSans.ttf", text_size)
-        text_size = draw.textbbox((100, 100), status, font=font)
+    font = ImageFont.truetype(detect_shrift_ttf(ttf=text_shrift), text_size)
+    text_size = draw.textbbox((100, 100), status, font=font)
 
-        x = (img.width - text_size[2]) / 2
-        y = (img.height - text_size[2]) / 2
+    x_sample = img
+    y_sample = img
 
-        draw.text((x, y), status, font=font, fill=text_color)
-        img.save("media/results.jpg")
-        with open(file='media/results.jpg', mode='rb') as photo:
-            caption = f"📝<code>{status}</code>\n\n✅<b> @{get_me.username} orqali taqdim etildi!</b>"
-            await message.answer_photo(photo=photo, caption=caption)
-            await state.finish()
+    detector = detect_place(place=text_place, x=x_sample, y=y_sample, text_size=text_size)
+    x = detector[0]
+    y = detector[1]
+    print(detector)
 
-    elif text_shrift == 'shrift2':
-        font = ImageFont.truetype("media/allura.otf", text_size)
-        text_size = draw.textbbox((100, 100), status, font=font)
+    draw.text((x, y), status, font=font, fill=text_color)
+    img.save("media/results.jpg")
+    with open(file='media/results.jpg', mode='rb') as photo:
+        caption = f"📝<code>{status}</code>\n\n✅<b> @{get_me.username} orqali taqdim etildi!</b>"
+        await message.answer_photo(photo=photo, caption=caption)
+        await state.finish()
 
-        x = (img.width - text_size[2]) / 2
-        y = (img.height - text_size[2]) / 2
-
-        draw.text((x, y), status, font=font, fill=text_color)
-        img.save("media/results.jpg")
-        with open(file='media/results.jpg', mode='rb') as photo:
-            caption = f"📝<code>{status}</code>\n\n✅<b> @{get_me.username} orqali taqdim etildi!</b>"
-            await message.answer_photo(photo=photo, caption=caption)
-            await state.finish()
-
-    elif text_shrift == 'shrift3':
-        font = ImageFont.truetype("media/Quicksand-Light.otf", text_size)
-        text_size = draw.textbbox((100, 100), status, font=font)
-
-        x = (img.width - text_size[2]) / 2
-        y = (img.height - text_size[2]) / 2
-
-        draw.text((x, y), status, font=font, fill=text_color)
-        img.save("media/results.jpg")
-        with open(file='media/results.jpg', mode='rb') as photo:
-            caption = f"📝<code>{status}</code>\n\n✅<b> @{get_me.username} orqali taqdim etildi!</b>"
-            await message.answer_photo(photo=photo, caption=caption)
-            await state.finish()
-
-    elif text_shrift == 'shrift4':
-        font = ImageFont.truetype("media/Quicksand_Dash.otf", text_size)
-        text_size = draw.textbbox((100, 100), status, font=font)
-
-        x = (img.width - text_size[2]) / 2
-        y = (img.height - text_size[2]) / 2
-
-        draw.text((x, y), status, font=font, fill=text_color)
-        img.save("media/results.jpg")
-        with open(file='media/results.jpg', mode='rb') as photo:
-            caption = f"📝<code>{status}</code>\n\n✅<b> @{get_me.username} orqali taqdim etildi!</b>"
-            await message.answer_photo(photo=photo, caption=caption)
-            await state.finish()
-
-    elif text_shrift == 'shrift5':
-        font = ImageFont.truetype("media/ostrich.otf", text_size)
-        text_size = draw.textbbox((100, 100), status, font=font)
-
-        x = (img.width - text_size[2]) / 2
-        y = (img.height - text_size[2]) / 2
-
-        draw.text((x, y), status, font=font, fill=text_color)
-        img.save("media/results.jpg")
-        with open(file='media/results.jpg', mode='rb') as photo:
-            caption = f"📝<code>{status}</code>\n\n✅<b> @{get_me.username} orqali taqdim etildi!</b>"
-            await message.answer_photo(photo=photo, caption=caption)
-            await state.finish()

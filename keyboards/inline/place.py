@@ -4,13 +4,13 @@ places = InlineKeyboardMarkup(
     inline_keyboard=[
         [
             InlineKeyboardButton(
-                    text="↖️", callback_data='top_left'
+                    text="ㅤ", callback_data='top_left'
                 ),
             InlineKeyboardButton(
                     text="⬆️", callback_data='top_center'
                 ),
             InlineKeyboardButton(
-                    text="↗️", callback_data='top_right'
+                    text="ㅤ", callback_data='top_right'
                 )
         ],
         [
@@ -26,13 +26,13 @@ places = InlineKeyboardMarkup(
         ],
         [
             InlineKeyboardButton(
-                    text="↙️", callback_data='bottom_left'
+                    text="ㅤ", callback_data='bottom_left'
                 ),
             InlineKeyboardButton(
                     text="⬇️", callback_data='bottom_center'
                 ),
             InlineKeyboardButton(
-                    text="↘️", callback_data='bottom_right'
+                    text="ㅤ", callback_data='bottom_right'
                 )
         ],
         [

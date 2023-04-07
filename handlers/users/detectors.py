@@ -48,3 +48,39 @@ def detect_shrift(shrift):
     elif shrift == 'shrift5':
         new_shrift = "5-shrift"
         return new_shrift
+
+def detect_shrift_ttf(ttf):
+    if ttf == 'shrift1':
+        ttf = "media/OpenSans.ttf"
+        return ttf
+    elif ttf == 'shrift2':
+        ttf = "media/allura.otf"
+        return ttf
+    elif ttf == 'shrift3':
+        ttf = "media/ostrich.otf"
+        return ttf
+    elif ttf == 'shrift4':
+        ttf = "media/Quicksand-Light.otf"
+        return ttf
+    elif ttf == 'shrift5':
+        ttf = "media/Quicksand_Dash.otf"
+        return ttf
+
+def detect_place(place, x, y, text_size):
+    if place == 'center':
+        x = (x.width - text_size[2]) / 2
+        y = (y.height - text_size[2]) / 2
+        return x, y
+    elif place == 'top_center':
+        x = x.width / 2
+        y = y.height - text_size[0]
+        return x, y
+    # elif place == 'top_right':
+    #     new_place = "media/ostrich.otf"
+    #     return new_place
+    # elif place == 'left':
+    #     new_place = "media/Quicksand-Light.otf"
+    #     return new_place
+    # elif place == 'center':
+    #     new_place = "media/Quicksand_Dash.otf"
+    #     return new_place
