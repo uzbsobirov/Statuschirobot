@@ -67,20 +67,23 @@ def detect_shrift_ttf(ttf):
         return ttf
 
 def detect_place(place, x, y, text_size):
-    if place == 'center':
-        x = (x.width - text_size[2]) / 2
-        y = (y.height - text_size[2]) / 2
+    if place == 'left':
+        x = ((x.width - text_size[2]) / 2) - text_size[0]
+        y = (y.height - text_size[2]) / 2 - text_size[0]
         return x, y
-    elif place == 'top_center':
+    elif place == 'bottom_center':
         x = x.width / 2
         y = y.height - text_size[0]
         return x, y
-    # elif place == 'top_right':
-    #     new_place = "media/ostrich.otf"
-    #     return new_place
-    # elif place == 'left':
-    #     new_place = "media/Quicksand-Light.otf"
-    #     return new_place
-    # elif place == 'center':
-    #     new_place = "media/Quicksand_Dash.otf"
-    #     return new_place
+    elif place == 'center':
+        x = x.width / 2 - text_size[3]
+        y = y.height / 2 - text_size[1]
+        return x, y
+    elif place == 'top_center':
+        x = (x.width / 2) - text_size[0]
+        y = (y.height / 2) - text_size[2]
+        return x, y
+    elif place == 'right':
+        x = x.width - text_size[2]
+        y = (y.height / 2) - text_size[1]
+        return x, y

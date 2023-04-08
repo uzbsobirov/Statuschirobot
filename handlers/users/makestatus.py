@@ -54,7 +54,7 @@ async def state_status(message: types.Message, state: FSMContext):
     draw = ImageDraw.Draw(img)
 
     font = ImageFont.truetype(detect_shrift_ttf(ttf=text_shrift), text_size)
-    text_size = draw.textbbox((100, 100), status, font=font)
+    text_size = draw.textbbox((50, 50), status, font=font)
 
     x_sample = img
     y_sample = img
@@ -62,7 +62,7 @@ async def state_status(message: types.Message, state: FSMContext):
     detector = detect_place(place=text_place, x=x_sample, y=y_sample, text_size=text_size)
     x = detector[0]
     y = detector[1]
-    print(detector)
+    print(detector, text_size)
 
     draw.text((x, y), status, font=font, fill=text_color)
     img.save("media/results.jpg")
