@@ -62,7 +62,6 @@ async def state_status(message: types.Message, state: FSMContext):
     detector = detect_place(place=text_place, x=x_sample, y=y_sample, text_size=text_size)
     x = detector[0]
     y = detector[1]
-    print(detector, text_size)
 
     draw.text((x, y), status, font=font, fill=text_color)
     img.save("media/results.jpg")

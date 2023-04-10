@@ -8,6 +8,11 @@ main = ReplyKeyboardMarkup(
             )
         ],
         [
+          KeyboardButton(
+              text="🖋 Ismga nik yasash"
+          )
+        ],
+        [
             KeyboardButton(
                 text="⚙️ Sozlamalar"
             ),
