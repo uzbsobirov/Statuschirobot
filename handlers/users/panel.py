@@ -53,9 +53,9 @@ async def choose_yes_no_data(call: types.CallbackQuery, state: FSMContext):
 
         success_send = 0
         not_send = 0
-        users = await db_json.select_all_users()
+        users = await db.select_all_users()
         for user in users:
-            user_id = user['user_id']
+            user_id = user[3]
             try:
                 await bot.send_photo(chat_id=user_id, photo=image_file_id, caption=image_text)
                 await asyncio.sleep(1)
@@ -89,9 +89,9 @@ async def user_choose_ha_image(message: types.Message, state: FSMContext):
 
     success_send = 0
     not_send = 0
-    users = await db_json.select_all_users()
+    users = await db.select_all_users()
     for user in users:
-        user_id = user['user_id']
+        user_id = user[3]
         try:
             await bot.send_photo(chat_id=user_id, photo=image_file_id, caption=image_text,
                                                     reply_markup=buttons(text=adv_text, url=adv_url))
@@ -138,9 +138,9 @@ async def choose_yes_no(call: types.CallbackQuery, state: FSMContext):
         success_send = 0
         not_send = 0
 
-        users = await db_json.select_all_users()
+        users = await db.select_all_users()
         for user in users:
-            user_id = user['user_id']
+            user_id = user[3]
             try:
                 await bot.send_message(chat_id=user_id, text=text)
                 await asyncio.sleep(1)
@@ -171,9 +171,9 @@ async def user_choose_ha_image(message: types.Message, state: FSMContext):
 
     not_send = 0
     success_send = 0
-    users = await db_json.select_all_users()
+    users = await db.select_all_users()
     for user in users:
-        user_id = user['user_id']
+        user_id = user[3]
         try:
             await bot.send_message(chat_id=user_id, text=text,
                                                     reply_markup=buttons(text=adv_text, url=adv_url))
@@ -228,9 +228,9 @@ async def choose_yes_no_data(call: types.CallbackQuery, state: FSMContext):
         not_send = 0
         success_send = 0
 
-        users = await db_json.select_all_users()
+        users = await db.select_all_users()
         for user in users:
-            user_id = user['user_id']
+            user_id = user[3]
             try:
                 await bot.send_video(chat_id=user_id, video=video_file_id, caption=video_text)
                 await asyncio.sleep(1)
@@ -262,9 +262,9 @@ async def user_choose_ha_image(message: types.Message, state: FSMContext):
 
     not_send = 0
     success_send = 0
-    users = await db_json.select_all_users()
+    users = await db.select_all_users()
     for user in users:
-        user_id = user['user_id']
+        user_id = user[3]
         try:
             await bot.send_video(chat_id=user_id, video=video_file_id, caption=video_text,
                                                     reply_markup=buttons(text=adv_text, url=adv_url))
