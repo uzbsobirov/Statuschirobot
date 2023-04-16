@@ -1,3 +1,3 @@
 from . import (
-    help, shrifts, size
+    help, shrifts, size, admin, panel
 )

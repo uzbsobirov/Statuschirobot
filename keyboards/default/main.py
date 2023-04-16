@@ -22,3 +22,31 @@ main = ReplyKeyboardMarkup(
         ]
     ], resize_keyboard=True, one_time_keyboard=True
 )
+
+main_admin = ReplyKeyboardMarkup(
+    keyboard=[
+        [
+            KeyboardButton(
+                text="📝 Rasmga Status Tayorlash ✍️"
+            )
+        ],
+        [
+          KeyboardButton(
+              text="🖋 Ismga nik yasash"
+          )
+        ],
+        [
+            KeyboardButton(
+                text="⚙️ Sozlamalar"
+            ),
+            KeyboardButton(
+                text="📋 Qoʻllanma"
+            )
+        ],
+        [
+            KeyboardButton(
+                text="💻 Admin panel"
+            )
+        ]
+    ], resize_keyboard=True, one_time_keyboard=True
+)

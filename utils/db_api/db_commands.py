@@ -56,6 +56,15 @@ class Database:
         """
         await self.execute(sql, execute=True)
 
+    async def create_table_sponsor(self):
+        sql = """
+        CREATE TABLE IF NOT EXISTS Sponsor (
+        id SERIAL PRIMARY KEY,
+        channel TEXT NULL UNIQUE
+        );
+        """
+        await self.execute(sql, execute=True)
+
     @staticmethod
     def format_args(sql, parameters: dict):
         sql += " AND ".join(
@@ -66,6 +75,10 @@ class Database:
     async def add_user(self, full_name: str, username: str, user_id: int, text_place: str, text_shrift: str, text_size: int, text_color: str):
         sql = "INSERT INTO users (full_name, username, user_id, text_place, text_shrift, text_size, text_color) VALUES($1, $2, $3, $4, $5, $6, $7) returning *"
         return await self.execute(sql, full_name, username, user_id, text_place, text_shrift, text_size, text_color, fetchrow=True)
+
+    async def add_channel(self, channel):
+        sql = "INSERT INTO Sponsor (channel) VALUES($1) returning *"
+        return await self.execute(sql, channel, fetchrow=True)
 
     async def select_all_users(self):
         sql = "SELECT * FROM Users"
@@ -84,6 +97,10 @@ class Database:
     async def count_users(self):
         sql = "SELECT COUNT(*) FROM Users"
         return await self.execute(sql, fetchval=True)
+
+    async def select_row_panel(self):
+        sql = "SELECT * FROM Sponsor"
+        return await self.execute(sql, fetch=True)
 
     async def update_user_issubs(self, issubs, user_id):
         sql = "UPDATE Users SET issubs=$1 WHERE user_id=$2"
@@ -108,6 +125,10 @@ class Database:
     async def delete_user(self, user_id):
         sql = "DELETE FROM Users WHERE user_id=$1"
         await self.execute(sql, user_id, execute=True)
+
+    async def delete_sponsor_channel(self, channel):
+        sql = "DELETE FROM Sponsor WHERE channel=$1"
+        await self.execute(sql, channel, execute=True)
 
 
     async def drop_courses(self):

@@ -105,3 +105,10 @@ class Database:
 
         with open('data.json', 'w') as file:
             json.dump(data, file)
+
+    async def select_all_users(self):
+        # Open the JSON file for reading
+        with open('data.json', 'r') as file:
+            # Parse the contents of the file into a Python object
+            data = json.load(file)
+            return data
