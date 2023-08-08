@@ -49,7 +49,7 @@ async def state_status(message: types.Message, state: FSMContext):
     await bot.download_file(file_path, "image.jpg")
     status = message.text
 
-    path_photo = 'C:/Users/Servis/Documents/Programming/Bot/Statuschirobot/image.jpg'
+    path_photo = 'D:\Programming\Bot\Statuschirobot\image.jpg'
     img = Image.open(path_photo)
     draw = ImageDraw.Draw(img)
 

@@ -8,11 +8,6 @@ main = ReplyKeyboardMarkup(
             )
         ],
         [
-          KeyboardButton(
-              text="🖋 Ismga nik yasash"
-          )
-        ],
-        [
             KeyboardButton(
                 text="⚙️ Sozlamalar"
             ),
@@ -29,11 +24,6 @@ main_admin = ReplyKeyboardMarkup(
             KeyboardButton(
                 text="📝 Rasmga Status Tayorlash ✍️"
             )
-        ],
-        [
-          KeyboardButton(
-              text="🖋 Ismga nik yasash"
-          )
         ],
         [
             KeyboardButton(
